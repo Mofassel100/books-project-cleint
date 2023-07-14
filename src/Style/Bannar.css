@@ -1,0 +1,26 @@
+#backgrounds {
+  background-image: url('https://hcommons.org/app/uploads/sites/1001669/2022/10/yin-adapted-2-scaled.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 15px;
+}
+#banner {
+  justify-content: center;
+  justify-items: center;
+  font-family: cursive;
+  font-size: 13px;
+  overflow: hidden;
+  border-right: 0.15em solid rgb(246, 12, 51);
+  white-space: nowrap;
+  animation: bookes 5s forwards;
+
+  width: 0;
+}
+@keyframes bookes {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

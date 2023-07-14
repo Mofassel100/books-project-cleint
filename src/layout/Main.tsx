@@ -6,11 +6,11 @@ const Main = () => {
   return (
     <div>
       <Navber></Navber>
-      <div className="py-12 fixed bottom-0">
+      <div className="py-12 ">
         <Outlet />
       </div>
 
-      <div className="fixed bottom-1 left-0 right-0 mx-auto">
+      <div className=" ">
         <Footer />
       </div>
     </div>
