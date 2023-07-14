@@ -1,28 +1,11 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../Component/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuCheckboxItem,
-  DropdownMenuRadioItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuGroup,
-  DropdownMenuPortal,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuRadioGroup,
-} from '../Component/ui/dropdown-menu';
 
 const Navber = () => {
   return (
     <nav className="w-full h-16 fixed top backdrop-blur-lg z-10">
       <div className="h-full w-full bg-white/60">
-        <div className="flex items-center justify-between w-full md:max-w-7xl h-full mx-auto ">
+        <div className="flex items-center md:justify-evenly lg:justify-between w-full md:max-w-7xl h-full lg:mx-5 mx-auto ">
           <div>
             <img
               className="h-8"
@@ -30,9 +13,9 @@ const Navber = () => {
               alt="log"
             />
           </div>
-          <div>
-            <ul className="flex items-center">
-              <li>
+          <div className="">
+            <ul className="flex lg:ite items-center">
+              <li className="items-center">
                 <Button variant="link" asChild>
                   <Link to="/">Home</Link>
                 </Button>
@@ -52,6 +35,10 @@ const Navber = () => {
                   {/* <HiOutlineSearc size="25" /> */}
                 </Button>
               </li>
+            </ul>
+          </div>
+          <div className="">
+            <ul className="flex items-end">
               <li>
                 {' '}
                 <div className="dropdown dropdown-end">
@@ -90,7 +77,7 @@ const Navber = () => {
                   </div>
                 </div>
               </li>
-              <li className="ml-5">
+              <li className="ml-5 sm:ml-2">
                 <div className="dropdown dropdown-end">
                   <label
                     tabIndex={0}
@@ -118,46 +105,6 @@ const Navber = () => {
                     </li>
                   </ul>
                 </div>
-                {/* <DropdownMenu>
-                  <DropdownMenuTrigger className="outline-none">
-                   
-                  </DropdownMenuTrigger>
-                  <DropdownMenuSubContent>
-                    <DropdownMenuLabel>Account</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer">
-                      Profile
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer">
-                      Billing
-                    </DropdownMenuItem>
-                   
-                      <>
-                        <Link to="/login">
-                          <DropdownMenuItem className="cursor-pointer">
-                            Login
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link to="/signup">
-                          <DropdownMenuItem className="cursor-pointer">
-                            Signup
-                          </DropdownMenuItem>
-                        </Link>
-                    
-               
-                   
-                      <DropdownMenuItem
-                        // onClick={() => handleLogOut()}
-                        className="cursor-pointer"
-                      >
-                        LogOut
-                      </DropdownMenuItem>
-                    
-                    <DropdownMenuItem className="cursor-pointer">
-                      Subscription
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu> */}
               </li>
             </ul>
           </div>
