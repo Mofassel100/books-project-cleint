@@ -3,8 +3,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Link } from 'react-router-dom';
 import { Button } from '../Component/ui/button';
+import { useAppSelector } from '../redux/hooks';
 
 const Navber = () => {
+  const { user, isLoading } = useAppSelector(state => state.user);
   return (
     <nav className="w-full h-16 fixed top backdrop-blur-lg z-10">
       <div className="h-full w-full bg-white/60">
@@ -97,13 +99,22 @@ const Navber = () => {
                     <li className="hover:bg-teal-500 rounded w-20">
                       <a className="justify-between">Profile</a>
                     </li>
-                    <li className="hover:bg-teal-500 rounded w-20">
-                      <Link to="/signup">Sign Up</Link>
-                    </li>
+                    {!user.email && (
+                      <>
+                        <li className="hover:bg-teal-500 rounded w-20">
+                          <Link to="/signup">Sign Up</Link>
+                        </li>
 
-                    <li className="hover:bg-teal-500 rounded w-20">
-                      <Link to="/login">Log In</Link>
-                    </li>
+                        <li className="hover:bg-teal-500 rounded w-20">
+                          <Link to="/login">Log In</Link>
+                        </li>
+                      </>
+                    )}
+                    {user.email && (
+                      <li className="hover:bg-teal-500 rounded w-20">
+                        <Link to="">Log Out</Link>
+                      </li>
+                    )}
                   </ul>
                 </div>
               </li>
