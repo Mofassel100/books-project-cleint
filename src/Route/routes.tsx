@@ -3,6 +3,7 @@ import App from '../App';
 import AllBooksPage from '../page/AllBooksPage';
 import NotFound from '../page/NotFound';
 import HomePage from '../page/HomePage';
+import SignUpPage from '../page/SignUpPage';
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,13 @@ const router = createBrowserRouter([
         path: '/allbooks',
         element: <AllBooksPage />,
       },
+      {
+        path: '/signup',
+        element: <SignUpPage />,
+      },
     ],
   },
+
   {
     path: '/',
     element: <NotFound />,
