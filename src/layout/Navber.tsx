@@ -17,7 +17,7 @@ const Navber = () => {
             />
           </div>
           <div className="">
-            <ul className="flex lg:ite items-center">
+            <ul className="flex lg:items-center">
               <li className="hover:bg-teal-500 rounded w-20">
                 <Button variant="link" asChild>
                   <Link to="/">Home</Link>

@@ -7,10 +7,6 @@ const HomePage = () => {
   return (
     <div>
       <Banner />
-
-      <div>
-        <Footer />
-      </div>
     </div>
   );
 };
