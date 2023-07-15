@@ -18,12 +18,12 @@ const Navber = () => {
           </div>
           <div className="">
             <ul className="flex lg:ite items-center">
-              <li className="items-center">
+              <li className="hover:bg-teal-500 rounded w-20">
                 <Button variant="link" asChild>
                   <Link to="/">Home</Link>
                 </Button>
               </li>
-              <li>
+              <li className="hover:bg-teal-500 rounded w-20">
                 <Button variant="link" asChild>
                   <Link to="/products">Products</Link>
                 </Button>
@@ -33,7 +33,7 @@ const Navber = () => {
                   <Link to="/checkout">Checkout</Link>
                 </Button>
               </li>
-              <li>
+              <li className="hover:bg-teal-500 rounded w-20">
                 <Button variant="ghost">
                   {/* <HiOutlineSearc size="25" /> */}
                 </Button>
@@ -80,7 +80,7 @@ const Navber = () => {
                   </div>
                 </div>
               </li>
-              <li className="ml-5 sm:ml-2">
+              <li className="ml-2 lg:mr-10 sm:ml-2">
                 <div className="dropdown dropdown-end">
                   <label
                     tabIndex={0}
@@ -94,23 +94,15 @@ const Navber = () => {
                     tabIndex={0}
                     className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
                   >
-                    <li>
+                    <li className="hover:bg-teal-500 rounded w-20">
                       <a className="justify-between">Profile</a>
                     </li>
-                    <li>
+                    <li className="hover:bg-teal-500 rounded w-20">
                       <Link to="/signup">Sign Up</Link>
                     </li>
-                    {/* <li>
-                      <Link
-                        to=""
-                        className=""
-                        onClick={() => (window as any).myModal.showModal()}
-                      >
-                        Sign Up
-                      </Link>
-                    </li> */}
-                    <li>
-                      <a>Logout</a>
+
+                    <li className="hover:bg-teal-500 rounded w-20">
+                      <Link to="/login">Log In</Link>
                     </li>
                   </ul>
                 </div>

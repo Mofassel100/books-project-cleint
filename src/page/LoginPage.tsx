@@ -2,11 +2,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import '../Style/Athentication.css';
-const SignUpPage = () => {
+const LoginPage = () => {
   interface SignupFormInputs {
     email: string;
     password: string;
-    name: string;
   }
   const {
     register,
@@ -14,28 +13,14 @@ const SignUpPage = () => {
     formState: { errors },
   } = useForm<SignupFormInputs>();
   const HandleonSubmit = (data: SignupFormInputs) => {
-    console.log(data.email, data.name, data.password);
+    console.log(data.email, data.password);
   };
 
   return (
-    <div id="ABacgrounds" className="pb-10 pt-10">
-      <div className="h-[400px] grid items-center justify-center mx-auto w-[350px] pb-10">
+    <div id="ABacgrounds" className="pb-4 pt-4">
+      <div className="h-[400px] grid items-center justify-center mx-auto w-[350px] pb-3">
         <form onSubmit={handleSubmit(HandleonSubmit)}>
-          <p className="text-2xl text-center ">Register </p>
-          <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text text-white font-bold  lg:text-2xl">
-                Name
-              </span>
-            </label>
-
-            <input
-              type="text"
-              className="input font-bold text-black  input-bordered w-full max-w-xs"
-              {...register('name', { required: 'Name in required' })}
-              placeholder="Enter Your name"
-            />
-          </div>
+          <p className="text-2xl text-center ">Log In </p>
 
           <div className="form-control w-full max-w-xs">
             <label className="label">
@@ -72,10 +57,8 @@ const SignUpPage = () => {
             />
             <br />
           </div>
-          <div className="text-center my-4">
-            <button className="btn btn hover:bg-teal-500 w-full ">
-              Register
-            </button>
+          <div className="text-center  my-4">
+            <button className="btn hover:bg-teal-500 w-full ">Log In</button>
           </div>
         </form>
       </div>
@@ -83,4 +66,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default LoginPage;
