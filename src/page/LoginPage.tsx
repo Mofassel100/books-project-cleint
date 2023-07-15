@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import '../Style/Athentication.css';
+import { useAppDispatch } from '../redux/hooks';
+import { loginUser } from '../redux/Fetures/user/userSlice';
 const LoginPage = () => {
   interface SignupFormInputs {
     email: string;
@@ -12,7 +15,9 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<SignupFormInputs>();
+  const dispatch = useAppDispatch();
   const HandleonSubmit = (data: SignupFormInputs) => {
+    dispatch(loginUser({ email: data.email, password: data.password }));
     console.log(data.email, data.password);
   };
 
