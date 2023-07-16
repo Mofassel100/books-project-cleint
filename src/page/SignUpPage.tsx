@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
@@ -5,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import '../Style/Athentication.css';
 import { useAppDispatch } from '../redux/hooks';
 import { createUser } from '../redux/Fetures/user/userSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
 const SignUpPage = () => {
   interface SignupFormInputs {
     email: string;
@@ -17,9 +21,12 @@ const SignUpPage = () => {
     formState: { errors },
   } = useForm<SignupFormInputs>();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.pathname || '/';
   const HandleonSubmit = (data: SignupFormInputs) => {
     dispatch(createUser({ email: data.email, password: data.password }));
-
+    navigate(from, { replace: true });
     console.log(data.email, data.name, data.password);
   };
 

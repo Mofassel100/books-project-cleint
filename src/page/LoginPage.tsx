@@ -1,25 +1,40 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import '../Style/Athentication.css';
-import { useAppDispatch } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { loginUser } from '../redux/Fetures/user/userSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast/headless';
 const LoginPage = () => {
   interface SignupFormInputs {
     email: string;
     password: string;
   }
+  const { user, isLoading } = useAppSelector(state => state.user);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignupFormInputs>();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.pathname || '/';
   const HandleonSubmit = (data: SignupFormInputs) => {
     dispatch(loginUser({ email: data.email, password: data.password }));
-    console.log(data.email, data.password);
+
+    toast.success('Login Successfull');
   };
+  useEffect(() => {
+    if (user.email && !isLoading) {
+      navigate(from, { replace: true });
+    }
+  }, [user.email, isLoading]);
 
   return (
     <div id="ABacgrounds" className="pb-4 pt-4">

@@ -1,12 +1,27 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../Component/ui/button';
-import { useAppSelector } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { signOut } from 'firebase/auth';
+import { auth } from '../lib/firebase.config';
+import { setUser } from '../redux/Fetures/user/userSlice';
 
 const Navber = () => {
-  const { user, isLoading } = useAppSelector(state => state.user);
+  const { user } = useAppSelector(state => state.user);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.pathname || '/';
+  const handleLogOut = () => {
+    signOut(auth).then(() => {
+      dispatch(setUser(null));
+    });
+  };
   return (
     <nav className="w-full h-16 fixed top backdrop-blur-lg z-10">
       <div className="h-full w-full bg-white/60">
@@ -20,22 +35,22 @@ const Navber = () => {
           </div>
           <div className="">
             <ul className="flex lg:items-center">
-              <li className="hover:bg-teal-500 rounded w-20">
+              <li className="hover:bg-teal-500 rounded-full w-20">
                 <Button variant="link" asChild>
                   <Link to="/">Home</Link>
                 </Button>
               </li>
-              <li className="hover:bg-teal-500 rounded w-20">
+              <li className="hover:bg-teal-500 rounded-full w-20">
                 <Button variant="link" asChild>
                   <Link to="/products">Products</Link>
                 </Button>
               </li>
-              <li>
+              <li className="hover:bg-teal-500 rounded-full">
                 <Button variant="link" asChild>
                   <Link to="/checkout">Checkout</Link>
                 </Button>
               </li>
-              <li className="hover:bg-teal-500 rounded w-20">
+              <li className="hover:bg-teal-500 rounded-full w-20">
                 <Button variant="ghost">
                   {/* <HiOutlineSearc size="25" /> */}
                 </Button>
@@ -94,25 +109,25 @@ const Navber = () => {
                   </label>
                   <ul
                     tabIndex={0}
-                    className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                    className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-28"
                   >
-                    <li className="hover:bg-teal-500 rounded w-20">
+                    <li className="hover:bg-teal-500 rounded-full w-20">
                       <a className="justify-between">Profile</a>
                     </li>
                     {!user.email && (
                       <>
-                        <li className="hover:bg-teal-500 rounded w-20">
+                        <li className="hover:bg-teal-500 rounded-full w-20">
                           <Link to="/signup">Sign Up</Link>
                         </li>
 
-                        <li className="hover:bg-teal-500 rounded w-20">
+                        <li className="hover:bg-teal-500 rounded-full w-20">
                           <Link to="/login">Log In</Link>
                         </li>
                       </>
                     )}
                     {user.email && (
-                      <li className="hover:bg-teal-500 rounded w-20">
-                        <Link to="">Log Out</Link>
+                      <li>
+                        <button onClick={handleLogOut}>Log Out</button>
                       </li>
                     )}
                   </ul>
