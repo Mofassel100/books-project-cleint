@@ -81,18 +81,18 @@ const AllBooksPage = () => {
                       className="rounded-xl w-[250px] h-[150px] "
                     />
                   </figure>
-                </Link>
 
-                <div className="card-body items-center text-center justify-center">
-                  <h2 className="">{book?.title}</h2>
-                  <div>
-                    <p>{book.author}</p>
-                    <span className="pr-2">{book.genre}</span>
-                    <span>{book.publication}</span>
+                  <div className="card-body items-center text-center justify-center">
+                    <h2 className="">{book?.title}</h2>
+                    <div>
+                      <p>{book.author}</p>
+                      <span className="pr-2">{book.genre}</span>
+                      <span>{book.publication}</span>
+                    </div>
+
+                    <div className="card-actions"></div>
                   </div>
-
-                  <div className="card-actions"></div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
