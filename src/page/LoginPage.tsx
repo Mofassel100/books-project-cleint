@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -24,7 +25,7 @@ const LoginPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location?.state?.pathname || '/';
+  let form = location.state.form?.pathname || '/';
   const HandleonSubmit = (data: SignupFormInputs) => {
     dispatch(loginUser({ email: data.email, password: data.password }));
 
@@ -32,7 +33,7 @@ const LoginPage = () => {
   };
   useEffect(() => {
     if (user.email && !isLoading) {
-      navigate(from, { replace: true });
+      navigate(form, { replace: true });
     }
   }, [user.email, isLoading]);
 

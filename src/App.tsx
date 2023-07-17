@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+
 import Footer from './layout/Footer';
 import Main from './layout/Main';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,6 +11,11 @@ import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 
 function App() {
+  // export const useSearchCriteria = () => {
+  //   const [searchCriteria, setSearchCriteria] = useState('');
+
+  //   return { searchCriteria, setSearchCriteria };
+  // };
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(setLoading(true));

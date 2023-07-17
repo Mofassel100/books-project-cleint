@@ -5,6 +5,8 @@ import NotFound from '../page/NotFound';
 import HomePage from '../page/HomePage';
 import SignUpPage from '../page/SignUpPage';
 import LoginPage from '../page/LoginPage';
+import AddBook from '../page/AddBook';
+import PrivateRoutes from './PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <LoginPage />,
+      },
+      {
+        path: '/addBook',
+        element: (
+          <PrivateRoutes>
+            <AddBook />
+          </PrivateRoutes>
+        ),
       },
     ],
   },

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-floating-promises */
@@ -10,20 +11,43 @@ import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { signOut } from 'firebase/auth';
 import { auth } from '../lib/firebase.config';
 import { setUser } from '../redux/Fetures/user/userSlice';
+import { getBooks, useGetBooksQuery } from '../redux/Fetures/books/booksApi';
+import { useState } from 'react';
 
-const Navber = () => {
+const Navber: React.FC = () => {
   const { user } = useAppSelector(state => state.user);
+  const [searchCriteria, setSearchCriteria] = useState('');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.pathname || '/';
+  // const { data: books, isLoading, isError } = useGetBooksQuery(undefined);
+  // const handleSearch = () => {
+  //   searchCriteria !== '' && useSearchBooksQuery(searchCriteria);
+  // };
+  // const handleReset = () => {
+  //   setSearchCriteria('');
+  //   useGetBooksQuery('');
+  // };
+  // const { data: searchResults } = useSearchBooksQuery(searchCriteria, {
+  //   enabled: searchCriteria !== '',
+  // });
+
+  // if (isLoading) {
+  //   return <div>Loading books...</div>;
+  // }
+
+  // if (isError) {
+  //   return <div>Error loading books.</div>;
+  // }
+  // console.log(searchResults);
   const handleLogOut = () => {
     signOut(auth).then(() => {
       dispatch(setUser(null));
     });
   };
   return (
-    <nav className="w-full h-16 fixed top backdrop-blur-lg z-10">
+    <nav className="w-full h-12 fixed top backdrop-blur-lg z-10">
       <div className="h-full w-full bg-white/60">
         <div className="flex items-center md:justify-evenly lg:justify-between w-full md:max-w-7xl h-full lg:mx-5 mx-auto ">
           <div>
@@ -40,9 +64,9 @@ const Navber = () => {
                   <Link to="/">Home</Link>
                 </Button>
               </li>
-              <li className="hover:bg-teal-500 rounded-full w-20">
+              <li className="hover:bg-teal-500 rounded-full ">
                 <Button variant="link" asChild>
-                  <Link to="/products">Products</Link>
+                  <Link to="/allbooks">Alll Books</Link>
                 </Button>
               </li>
               <li className="hover:bg-teal-500 rounded-full">
@@ -50,11 +74,22 @@ const Navber = () => {
                   <Link to="/checkout">Checkout</Link>
                 </Button>
               </li>
-              <li className="hover:bg-teal-500 rounded-full w-20">
-                <Button variant="ghost">
-                  {/* <HiOutlineSearc size="25" /> */}
+              <li className="hover:bg-teal-500 rounded-full">
+                <Button variant="link" asChild>
+                  <Link to="/addBook">Add Book</Link>
                 </Button>
               </li>
+              {/* <li className=" w-52 h-16">
+                <div>
+                  <input
+                    type="text"
+                    value={searchCriteria}
+                    onChange={e => setSearchCriteria(e.target.value)}
+                  />
+                  <button onClick={handleSearch}>Search</button>
+                  <button onClick={handleReset}>Reset</button>
+                </div>
+              </li> */}
             </ul>
           </div>
           <div className="">
