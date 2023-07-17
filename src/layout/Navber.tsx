@@ -139,7 +139,7 @@ const Navber: React.FC = () => {
                     className="btn btn-ghost btn-circle avatar"
                   >
                     <div className="w-10 rounded-full">
-                      <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                      <img src="https://img.freepik.com/premium-photo/opened-book-with-flying-pages-butterflies-dark-backgroundgenerative-ai_391052-12859.jpg" />
                     </div>
                   </label>
                   <ul

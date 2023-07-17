@@ -31,8 +31,6 @@ function App() {
   return (
     <>
       <Main></Main>
-      <Toaster />
-      <Footer />
     </>
   );
 }
