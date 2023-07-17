@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { IBooks } from '../../../types/globalTypes';
+
 import { api } from '../../api/apiSlice';
 
 const booksApi = api.injectEndpoints({

@@ -4,32 +4,31 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import '../Style/Athentication.css';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { loginUser } from '../redux/Fetures/user/userSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-hot-toast/headless';
+// import { toast } from 'react-hot-toast/headless';
+// type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
+interface SignupFormInputs {
+  email: string;
+  password: string;
+}
 const LoginPage = () => {
-  interface SignupFormInputs {
-    email: string;
-    password: string;
-  }
   const { user, isLoading } = useAppSelector(state => state.user);
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<SignupFormInputs>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  let form = location.state.form?.pathname || '/';
+  const form = location.state?.pathname || '/';
   const HandleonSubmit = (data: SignupFormInputs) => {
     dispatch(loginUser({ email: data.email, password: data.password }));
-
-    toast.success('Login Successfull');
   };
   useEffect(() => {
     if (user.email && !isLoading) {

@@ -5,22 +5,18 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from '../Component/ui/button';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { signOut } from 'firebase/auth';
 import { auth } from '../lib/firebase.config';
 import { setUser } from '../redux/Fetures/user/userSlice';
-import { getBooks, useGetBooksQuery } from '../redux/Fetures/books/booksApi';
-import { useState } from 'react';
 
 const Navber: React.FC = () => {
   const { user } = useAppSelector(state => state.user);
-  const [searchCriteria, setSearchCriteria] = useState('');
+
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location?.state?.pathname || '/';
+
   // const { data: books, isLoading, isError } = useGetBooksQuery(undefined);
   // const handleSearch = () => {
   //   searchCriteria !== '' && useSearchBooksQuery(searchCriteria);

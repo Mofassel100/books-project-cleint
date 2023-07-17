@@ -9,15 +9,15 @@ import { Link } from 'react-router-dom';
 
 const AllBooksPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedGenre, setSelectedGenre] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
-  const handleGenreChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setSelectedGenre(event.target.value as string);
-  };
+  // const [selectedGenre, setSelectedGenre] = useState('');
+  // const [selectedYear, setSelectedYear] = useState('');
+  // const handleGenreChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  //   setSelectedGenre(event.target.value as string);
+  // };
 
-  const handleYearChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setSelectedYear(event.target.value as string);
-  };
+  // const handleYearChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  //   setSelectedYear(event.target.value as string);
+  // };
   const { data, isLoading, isError } = useGetBooksQuery(undefined);
   if (isLoading) {
     return <div>Loadin ......</div>;
@@ -26,7 +26,7 @@ const AllBooksPage = () => {
     return <div>Eroors...</div>;
   }
   const books: IBooks[] = data?.data;
-  console.log(books);
+
   const handleSearchTermChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -53,7 +53,7 @@ const AllBooksPage = () => {
     <div className="grid grid-cols-12 max-w-7xl mx-auto mt-5">
       <div
         className="col-span-3
-      mr-10 space-y-5 border fixed top-0 rounded-2xl border-gray-200/80 p-5 self-start sticky top-16 h-[calc(100vh-80px)]"
+      mr-10 space-y-5 border  rounded-2xl border-gray-200/80 p-5 self-start sticky top-16 h-[calc(100vh-80px)]"
       >
         <input
           type="text"
@@ -70,7 +70,7 @@ const AllBooksPage = () => {
               // card add
               <div
                 key={index}
-                className=" card my-3 w-80 bg-base-100 border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all 
+                className=" card  w-80 bg-base-100 border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all 
                 my-2 gap-2"
               >
                 <Link to={`/book-details/${book._id}`}>

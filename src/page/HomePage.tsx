@@ -3,20 +3,16 @@
 /* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import Banner from '../Component/ui/Banner';
-import {
-  useGetBooksLimitQuery,
-  useGetBooksQuery,
-} from '../redux/Fetures/books/booksApi';
+import { useGetBooksLimitQuery } from '../redux/Fetures/books/booksApi';
 import { IBooks } from '../types/globalTypes';
 
 const HomePage = () => {
-  const { data, isLoading, isError } = useGetBooksLimitQuery(undefined);
+  const { data, isLoading } = useGetBooksLimitQuery(undefined);
   if (isLoading) {
     return <div className="text-center">Loading....</div>;
   }
 
   const books: IBooks[] = data?.data;
-  console.log(books);
 
   return (
     <div>

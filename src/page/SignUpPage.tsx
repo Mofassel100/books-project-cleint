@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React from 'react';
+
 import { useForm } from 'react-hook-form';
 import '../Style/Athentication.css';
 import { useAppDispatch } from '../redux/hooks';
@@ -18,7 +18,7 @@ const SignUpPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<SignupFormInputs>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -86,9 +86,7 @@ const SignUpPage = () => {
             <br />
           </div>
           <div className="text-center my-4">
-            <button className="btn btn hover:bg-teal-500 w-full ">
-              Register
-            </button>
+            <button className="btn  hover:bg-teal-500 w-full ">Register</button>
           </div>
         </form>
       </div>

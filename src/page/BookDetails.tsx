@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from 'react';
+
 import { useParams } from 'react-router-dom';
 import { useSingleBookQuery } from '../redux/Fetures/books/booksApi';
 
